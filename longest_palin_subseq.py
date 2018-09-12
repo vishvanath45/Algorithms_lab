@@ -1,10 +1,7 @@
 # Longest palindromic subsequence in a given string
 # Example= CHARACTER - CARAC
 
-s = 'BABASBC'
-
-ans1 = []
-ans2 = ""
+s = 'AAABABBB'
 
 def lps(i,j):
 	# print(i,j)
@@ -14,13 +11,25 @@ def lps(i,j):
 		elif( s[i] == s[j] ):
 			return s[i] + lps(i+1, j-1) + s[i]
 		else:
-			if(len(lps(i+1,j)) > len(lps(i,j-1))):
-				return lps(i+1,j)
+			a = lps(i+1,j)
+			b = lps(i,j-1)
+			if(len(a) > len(b)):
+				return a
 			else:
-				return lps(i,j-1)
+				return b
 	else:	
-		return 0;
+		return "";
 
-ans4 = lps(0,len(s)-1)
+st = set()
+for i in range(0, len(s)):
+	for j in range(0,i):
+		st.add(lps(j,i))
 
-print "ans is ", ans4
+maxlen = 0
+for i in st:
+	if(len(i) > maxlen):
+		maxlen = len(i)
+
+for i in st:
+	if(len(i) == maxlen):
+		print i
