@@ -1,8 +1,8 @@
 # Longest palindromic subsequence in a given string
 # Example= CHARACTER - CARAC
 
-s = 'AAABABBB'
-
+# s = 'UCHARACTERARAXXYXXCHGRGCTER'
+s = 'AAAABBBB'
 def lps(i,j):
 	# print(i,j)
 	if( i <= j):
